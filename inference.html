@@ -1,0 +1,24 @@
+<html>
+<header>
+	<script language="javascript" src="./fact.js"></script>
+	<script language="javascript" src="./rule.js"></script>
+	<script language="javascript" src="./engine.js"></script>
+	<script language="javascript" src="./expert_system.js"></script>
+	<script language="javascript">
+	function init() {
+		var expertSystem = new ExpertSystem();
+
+		expertSystem.addRule("J'ai de la fièvre", ["Température > 38"]);
+		expertSystem.addRule("Je suis malade", ["J'ai de la fièvre", "J'ai mal à la tête"]);
+		expertSystem.addRule("Prendre un doliprane", ["Je suis malade"]);
+		
+		expertSystem.setFactValid("Température > 38", true);
+		expertSystem.setFactValid("J'ai mal à la tête", true);
+		
+		console.log(expertSystem.inferForward());
+	}
+	</script>
+</header>
+<body onload="init()">
+</body>
+</html>
